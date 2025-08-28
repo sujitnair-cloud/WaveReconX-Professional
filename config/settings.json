@@ -1,0 +1,139 @@
+{
+    "application": {
+        "name": "WaveReconX Professional",
+        "version": "2.0.0",
+        "description": "Enhanced RF Spectrum Analysis Tool",
+        "author": "WaveReconX Team"
+    },
+    "gui": {
+        "window_size": "1600x950",
+        "min_size": "1400x900",
+        "theme": "dark",
+        "refresh_rate": 1000,
+        "auto_save": true,
+        "auto_save_interval": 300
+    },
+    "hardware": {
+        "sdr_devices": {
+            "RTL-SDR": {
+                "name": "RTL-SDR (RTL2832U)",
+                "sample_rate": 2048000,
+                "center_freq": 100000000,
+                "gain": "auto",
+                "bandwidth": 2000000
+            },
+            "HackRF": {
+                "name": "HackRF One",
+                "sample_rate": 8000000,
+                "center_freq": 100000000,
+                "gain": "auto",
+                "bandwidth": 4000000
+            },
+            "USRP": {
+                "name": "USRP B200/B210",
+                "sample_rate": 10000000,
+                "center_freq": 100000000,
+                "gain": "auto",
+                "bandwidth": 8000000
+            }
+        },
+        "default_device": "RTL-SDR",
+        "auto_detect": true
+    },
+    "spectrum": {
+        "bands": {
+            "GSM900": {
+                "start_freq": 890000000,
+                "end_freq": 960000000,
+                "channel_spacing": 200000,
+                "enabled": true
+            },
+            "GSM1800": {
+                "start_freq": 1710000000,
+                "end_freq": 1880000000,
+                "channel_spacing": 200000,
+                "enabled": true
+            },
+            "LTE": {
+                "start_freq": 700000000,
+                "end_freq": 2600000000,
+                "channel_spacing": 1000000,
+                "enabled": true
+            },
+            "UMTS": {
+                "start_freq": 1920000000,
+                "end_freq": 2170000000,
+                "channel_spacing": 5000000,
+                "enabled": true
+            },
+            "5G_NR": {
+                "start_freq": 3400000000,
+                "end_freq": 3800000000,
+                "channel_spacing": 1000000,
+                "enabled": true
+            }
+        },
+        "scan_settings": {
+            "step_size": 100000,
+            "dwell_time": 100,
+            "threshold": -80,
+            "max_channels": 1000
+        }
+    },
+    "protocols": {
+        "downgrade": {
+            "enabled": true,
+            "target_version": "5.0",
+            "supported_versions": ["5.3", "5.2", "5.1", "5.0"]
+        },
+        "extraction": {
+            "sms": {
+                "enabled": true,
+                "real_time": true,
+                "save_to_file": true
+            },
+            "calls": {
+                "enabled": true,
+                "real_time": true,
+                "save_audio": true,
+                "audio_format": "wav"
+            }
+        }
+    },
+    "database": {
+        "path": "data/wave_recon_x.db",
+        "backup_enabled": true,
+        "backup_interval": 3600,
+        "max_backups": 10
+    },
+    "logging": {
+        "level": "INFO",
+        "file_enabled": true,
+        "console_enabled": true,
+        "max_file_size": 10485760,
+        "backup_count": 5
+    },
+    "output": {
+        "formats": ["csv", "json", "xml"],
+        "default_format": "csv",
+        "auto_export": false,
+        "export_path": "data/exports/"
+    },
+    "security": {
+        "encryption": {
+            "enabled": true,
+            "algorithm": "AES-256",
+            "key_rotation": 3600
+        },
+        "authentication": {
+            "required": false,
+            "method": "password"
+        }
+    },
+    "performance": {
+        "max_threads": 4,
+        "buffer_size": 8192,
+        "cache_enabled": true,
+        "cache_size": 100
+    }
+}
